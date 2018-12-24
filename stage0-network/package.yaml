@@ -1,0 +1,11 @@
+name: hslab
+version: 0.0
+dependencies:
+  - base
+  - streaming-commons
+
+default-extensions:
+  - OverloadedStrings
+
+executable:
+  main: Main.hs
