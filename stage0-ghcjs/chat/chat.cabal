@@ -1,0 +1,11 @@
+name: chat
+version: 0.1
+
+executable chat
+  main-is: Main.hs
+  build-depends: 
+      base
+    , reflex-dom
+  default-extensions:
+      OverloadedStrings
+  ghc-options: -threaded
