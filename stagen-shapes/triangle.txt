@@ -1,0 +1,60 @@
+Haskell:
+  | Triangle Double Double Double
+
+perimeter (Triangle a b c) = a + b + c
+
+area (Triangle a b c) =
+  let s = (a + b + c) / 2
+  in  sqrt $ s * (s - a) * (s - b) * (s - c)
+
+newOp: 
+
+scale :: Double -> Shape -> Shape
+scale factor (Rect (Width w) (Height h)) = Rect (Width $ w * factor) (Height $ h * factor)
+scale factor (Circle (Radius r)) = Circle (Radius $ factor * r)
+scale factor (Triangle a b c) = Triangle (a * factor) (b * factor) (c * factor)
+
+C++:
+
+class Triangle : public Shape {
+public:
+  Triangle(double a, double b, double c) 
+    : a_(a), b_(b), c_(c) { }
+
+  virtual double Perimeter() {
+    return a_ + b_ + c_;
+  }
+
+  virtual double Area() {
+    const double s = (a_ + b_ + c_) / 2;
+    return sqrt(s * (s - a_) * (s - b_) * (s - c_));
+  }
+
+private:
+  double a_, b_, c_;
+};
+
+  std::cout << "Perimeter of unit triangle: " << Triangle(1.0, 1.0, 1.0).Perimeter() << std::endl;
+  std::cout << "Area of unit triangle: " << Triangle(1.0, 1.0, 1.0).Area() << std::endl;
+
+Scale:
+
+#include <memory> // for std::unique_ptr
+
+  virtual std::unique_ptr<Shape> Scale(double factor) = 0;
+
+  virtual std::unique_ptr<Shape> Scale(double factor) {
+    return std::make_unique<Rect>(factor * w_, factor * h_);
+  }
+
+  virtual std::unique_ptr<Shape> Scale(double factor) {
+    return std::make_unique<Circle>(factor * r_);
+  }
+  
+  virtual std::unique_ptr<Shape> Scale(double factor) {
+    return std::make_unique<Triangle>(factor * a_, factor * b_, factor * c_);
+  }
+
+  std::cout << "Area of scaled rect: " << Rect(1.0, 1.0).Scale(2.0)->Area() << std::endl;
+  std::cout << "Area of scaled circle: " << Circle(1.0).Scale(2.0)->Area() << std::endl;
+  std::cout << "Area of scaled triangle: " << Triangle(1.0, 1.0, 1.0).Scale(2.0)->Area() << std::endl;

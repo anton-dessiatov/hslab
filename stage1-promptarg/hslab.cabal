@@ -1,0 +1,20 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 08ec347012f4478506899affc4b83c12c1f1145e537247a53f83027f71580df7
+
+name:           hslab
+version:        0.0
+build-type:     Simple
+
+executable hslab
+  main-is: Main.hs
+  other-modules:
+      Paths_hslab
+  build-depends:
+      base
+    , optparse-applicative
+  default-language: Haskell2010

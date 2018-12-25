@@ -8,6 +8,11 @@ import Data.Streaming.Network
   , runTCPServer, appRead, appWrite
   )
 import Options.Applicative
+  ( Parser, ParserInfo
+  , flag', long, help, option, auto, value, info, helper
+  , fullDesc, progDesc, header, (<**>)
+  , execParser
+  )
 
 import qualified Data.ByteString.Char8 as B
 

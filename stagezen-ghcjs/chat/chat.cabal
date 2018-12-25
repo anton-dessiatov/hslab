@@ -6,7 +6,9 @@ executable chat
   main-is: Main.hs
   build-depends: 
       base
+    , data-default
     , reflex-dom
+    , text
   default-extensions:
       OverloadedStrings
   ghc-options: -threaded -dedupe 

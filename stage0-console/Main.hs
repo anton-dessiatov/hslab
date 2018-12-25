@@ -2,9 +2,9 @@ module Main where
 
 chat :: IO ()
 chat = do
-  getLine >>= putStrLn
+  line <- getLine
+  putStrLn line
   chat
-
 
 main :: IO ()
 main = do
